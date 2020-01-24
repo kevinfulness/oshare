@@ -1,0 +1,66 @@
+.users__lineitem {
+	width: 100%;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+	h3 {
+		margin: auto 10px;
+	}
+	a {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+.users__avatar {
+	display: inline-block;
+}
+
+.profile__avatar {
+	height: 120px;
+	width: 120px;
+	border-radius: 60px;
+	object-fit: cover;
+}
+
+.profile__info {
+	& h2 {
+		margin-bottom: 0;
+	}
+	& div {
+		margin-bottom: 20px;
+	}
+}
+
+.profile__controls > div, .profile__stats {
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 30px;
+	text-align: center;
+}
+
+.profile__stats {
+	background: #F0F0F0;
+}
+
+.profile__controls {
+	display: flex;
+	flex-direction: row;
+	& :nth-child(1) {
+		margin-right: 10px;
+	}
+}
+
+.profile__controls > div {
+	width: 100%;
+	background: #FF6666;
+	margin: 0;
+	cursor: pointer;
+	& a {
+		color: #FFF;
+		text-decoration: none;
+	}
+	&:hover {
+		background: #000;
+	}
+}

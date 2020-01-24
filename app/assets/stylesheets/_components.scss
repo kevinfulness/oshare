@@ -1,0 +1,36 @@
+.button {
+	height: 24px;
+	width: 100%;
+	text-align: center;
+	&__primary {
+		background: #000;
+		color: #fff;
+	}
+	&__secondary {
+		background: #fff;
+		color: #000;
+		border: 1px solid #000;
+	}
+	&:hover {
+		background: #000;
+	}
+}
+
+.growl {
+	box-sizing: border-box;
+	margin: 50px auto;
+	width: 100%;
+	padding: 20px;
+	background: #E0E0E0;
+	border-radius: 30px;
+}
+
+.avatar {
+	object-fit: cover;
+}
+
+.avatar__small {
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+}

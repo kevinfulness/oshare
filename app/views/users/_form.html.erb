@@ -1,0 +1,14 @@
+<%= form_with model: @user, local: true do |f| %>
+	<% if @user.avatar.attached? %>
+		<%= image_tag @user.avatar, class: 'profile__avatar' %>
+	<% end %>
+	<h2><%= @user.username %></h2>
+	<div><%= f.file_field :avatar %></div>
+	<div><%= f.label :avatar, 'Choose Avatar' %></div>
+	<div><%= f.text_field :username, placeholder: "username" %></div>
+	<div><%= f.text_field :firstname, placeholder: "name" %></div>
+	<div><%= f.text_field :website, placeholder: "website" %></div>
+	<div><%= f.text_area :bio, placeholder: "bio" %></div>
+	<div><%= f.text_field :email, placeholder: "email" %></div>
+	<div><%= f.submit "Submit", class: 'btn btn-primary' %></div>
+<% end %>

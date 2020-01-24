@@ -1,0 +1,50 @@
+<% obj.each do |story| %>
+	<div class="story">
+
+		<% if story.image.attached? %>
+			<%= link_to story_path(story) do %>
+			<div class="story__image">
+				<%= image_tag story.image, alt: 'image' %>
+			</div>
+			<% end %>
+		<% end %>
+
+		<div class="story__content">
+
+			<div class="story__info">
+				<%= link_to user_path(story.user) do %>
+					<div class="story__avatar">
+						<% if story.user.avatar.attached? %>
+								<%= image_tag story.user.avatar, class: 'avatar avatar__small story__avatar_image' %>
+						<% end %>
+					</div>
+				<% end %>
+				<h4><%= link_to story.user.username, user_path(story.user) %></h4>
+				<h4 class="story__timestamp"><%= time_ago_in_words(story.created_at) %> ago</h4>
+			</div>
+
+			<div class="story__caption">
+				<p>
+					<% story.caption.to_s.split(' ').each do |word| %>
+						<% if word.start_with?('#') %>
+							<%= link_to word, search_path(query: word) %>
+						<% else %>
+							<%= word %>
+						<% end %>
+					<% end %>
+				</p>
+			</div>
+
+			<div class="story__controls">
+				<ul>
+					<% if can? :manage, story %> 
+					<li><%= link_to 'Edit', edit_story_path(story) %></li>
+					<li><%= link_to 'Delete', story_path(story), method: :delete, data: {confirm: "Bruh... you sure?"} %></li>
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+<% end %>

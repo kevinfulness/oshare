@@ -1,0 +1,60 @@
+<div class="toolbar">
+
+	<!-- LOGO -->
+	<!-- LOGO -->
+	<!-- LOGO -->	
+	<div class="nav__logo">
+		<%= link_to stories_path do %>
+			<%= show_svg('logo_oshare.svg') %>
+		<% end %>
+	</div>
+
+	<!-- TOGGLE -->
+	<!-- TOGGLE -->
+	<!-- TOGGLE -->
+	<%= link_to users_path, class: 'footer__toggle' do %>
+		<div class="footer__toggle-global">
+			<%= show_svg('icon_global.svg') %>
+		</div>
+		<div class="footer__toggle-local">
+			<%= show_svg('icon_local.svg') %>
+		</div>
+	<% end %>
+
+	<!-- SEARCH -->
+	<!-- SEARCH -->
+	<!-- SEARCH -->
+	<div class="nav__search">
+		<%= show_svg('icon_search.svg') %>
+	</div>
+
+
+	<!-- PROFILE -->
+	<!-- PROFILE -->
+	<!-- PROFILE -->	
+	<div class="nav__profile">
+		<% if user_signed_in? %>
+			<%= link_to user_path(current_user) do %>
+				<% if current_user.avatar.attached? %>
+					<%= image_tag current_user.avatar, class: 'nav__profile-avatar' %>
+				<% else %>
+					<% current_user.firstname %>
+				<% end %>
+			<% end %>
+		<% else %>
+			<%= link_to new_user_session_path do %>
+				<div class="nav__profile-login"></div>
+			<% end %>
+		<% end %>
+	</div>
+
+	<!-- FAB -->
+	<!-- FAB -->
+	<!-- FAB -->
+	<%= link_to new_story_path, class: 'footer__upload' do %>
+		<div class="footer__upload_button">
+			<div class="footer__upload_icon">+</div>
+		</div>
+	<% end %>
+
+</div>

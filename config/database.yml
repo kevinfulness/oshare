@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development_oshare3
+
+test:
+  <<: *default
+  database: db/test_oshare3
+
+production:
+  <<: *default
+  database: db/production_oshare3

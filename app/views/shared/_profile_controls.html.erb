@@ -1,0 +1,6 @@
+<div class="profile__controls">
+	<ul>
+		<li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
+		<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+	</ul>
+</div>

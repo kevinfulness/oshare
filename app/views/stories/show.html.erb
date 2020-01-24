@@ -1,0 +1,107 @@
+<div class="story">
+
+	<% if @story.image.attached? %>
+		<div class="story__image">
+			<%= image_tag @story.image, alt: 'image' %>
+		</div>
+	<% end %>
+	
+	<div class="story__content">
+
+		<div class="story__info">					
+			<%= link_to user_path(@story.user) do %>
+				<div class="story__avatar">
+					<%= render 'shared/avatar' %>
+				</div>
+				<h4><%= @story.user.username %></h4>
+			<% end %>
+			<h4 class="story__timestamp"><%= time_ago_in_words(@story.created_at) %> ago</h4>
+		</div>
+
+		<div class="story__caption">
+				<% @story.caption.to_s.split(' ').each do |word| %>
+					<% if word.start_with?('#') %>
+						<%= link_to word, search_path(query: word) %>
+					<% else %>
+						<%= word %>
+					<% end %>
+				<% end %>
+		</div>
+
+		<% if can? :manage, @story %> 
+			<div class="story__controls">
+				<ul>
+					<li><%= link_to 'Edit', edit_story_path(@story) %></li>
+					<li><%= link_to 'Delete', story_path(@story), method: :delete, data: {confirm: "Bruh... you sure?"} %></li>
+				</ul>
+			</div>
+		<% end %>
+
+	</div>
+</div>
+
+
+
+
+
+<% obj.each do |story| %>
+<div class="story">
+	<div class="story__content">
+
+		<!-- IMAGE VIDEO -->
+		<!-- IMAGE VIDEO -->
+		<!-- IMAGE VIDEO -->
+		<% if story.image.attached? %>
+			<div class="story__image">
+				<%= image_tag story.image, alt: 'image' %>
+			</div>
+		<% end %>
+
+		<% if story.video.attached? %>
+			<div class="story__image">
+				<%= video_tag story.video, alt: 'video' %>
+			</div>
+		<% end %>
+
+		<!-- INFO -->
+		<!-- INFO -->
+		<!-- INFO -->
+		<div class="story__info">
+			<div class="story__avatar">
+				<% if story.user.avatar.attached? %>
+					<%= link_to user_path(story.user) do %>
+						<%= image_tag story.user.avatar, class: 'avatar__image' %>
+					<% end %>
+				<% end %>
+			</div>
+			<h4><%= link_to story.user.username, user_path(story.user) %></h4>
+			<h4 class="story__timestamp"><%= time_ago_in_words(story.created_at) %> ago</h4>
+		</div>
+
+		<!-- CAPTION -->
+		<!-- CAPTION -->
+		<!-- CAPTION -->
+		<div class="story__caption">
+			<% story.caption.to_s.split(' ').each do |word| %>
+				<% if word.start_with?('#') %>
+					<%= link_to word, search_path(query: word) %>
+				<% else %>
+					<%= word %>
+				<% end %>
+			<% end %>
+		</div>
+
+		<!-- CONTROLS -->
+		<!-- CONTROLS -->
+		<!-- CONTROLS -->
+		<% if can? :manage, story %> 
+			<div class="story__controls">
+				<ul>
+					<li><%= link_to 'Edit', edit_story_path(story) %></li>
+					<li><%= link_to 'Delete', story_path(story), method: :delete, data: {confirm: "Bruh... you sure?"} %></li>
+				</ul>
+			</div>
+		<% end %>
+	</div>
+</div>
+<% end %>

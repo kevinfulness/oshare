@@ -1,0 +1,38 @@
+<% if current_user == @user %>
+
+	<!-- FRIENDS -->
+	<!-- FRIENDS -->
+	<!-- FRIENDS -->
+	<h3>Friends</h3>
+	<% if current_user.friends.any? %>
+		<% current_user.friends.each do |friend| %>
+			<%= link_to friend.firstname, user_path(friend) %>
+		<% end %>
+	<% else %>
+		<h2>You got no bros, bro...</h2>
+	<% end %>
+
+	<!-- FRIEND REQUESTS -->
+	<!-- FRIEND REQUESTS -->
+	<!-- FRIEND REQUESTS -->
+	<% if current_user.requested_friends.any? %>
+		<h3>New Friend Requests</h3>
+		<% current_user.requested_friends.each do |friend| %>
+			<%= link_to friend.firstname, user_path(friend) %>
+			<%= form_for confirm_friendship_path, method: :post, remote: true do |f| %>
+				<%= f.hidden_field friend.id %>
+				<%= f.submit 'Be friends!' %>
+			<% end %>
+		<% end %>
+	<% end %>
+
+	<!-- PENDING -->
+	<!-- PENDING -->
+	<!-- PENDING -->
+	<% if current_user.pending_friends.any? %>
+		<h3>Requested Friends</h3>
+		<% current_user.pending_friends.each do |friend| %>
+			<%= link_to friend.firstname, user_path(friend) %>
+		<% end %>
+	<% end %>
+<% end %>

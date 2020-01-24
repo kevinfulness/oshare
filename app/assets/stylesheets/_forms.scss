@@ -1,0 +1,86 @@
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="submit"],
+textarea,
+label[for="user_avatar"],
+label[for="post_image"] {
+	font-family: arial, sans serif;
+	font-size: 12px;
+	margin-bottom: 10px;
+	min-width: 100%;
+	padding-left: 20px;
+	border: none;
+	border-radius: 15px;
+	background: #F0F0F0;
+}
+
+input, label {
+	height: 30px;
+}
+
+textarea {
+	min-height: 90px;
+	padding-top: 10px;
+}
+
+input[type="file"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: none;
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	z-index: -1;
+	magtin: 0;
+}
+
+input[type="submit"] {
+	background: #FF6666;
+	color: #FFF;
+	cursor: pointer;
+	&:hover {
+		background: #000;
+	}
+}
+label[for="user_avatar"],
+label[for="story_image"] {
+	background: #666;
+	color: #FFF;
+}
+
+.checkbox {
+	input, label {
+		display: inline-block;
+	}
+}
+
+input[type="checkbox"] {
+	max-width: 30px !important;
+	margin: 0 auto 0 0;
+}
+
+.checkbox__label {
+	margin: 0 0 0 auto;
+}
+
+label {
+	display: inline-block;
+	text-align: center;
+	padding: 10px;
+}
+
+
+.upload__preview {
+	display: none;
+	height: 250px;
+	text-align: center;
+	margin-bottom: 10px;
+	img {
+		height: 250px;
+		max-width: 100%;
+		border-radius: 30px;
+	}
+}

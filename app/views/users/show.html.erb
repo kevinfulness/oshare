@@ -1,0 +1,41 @@
+<div class="profile__info">
+
+	<!-- AVATAR -->
+	<!-- AVATAR -->
+	<!-- AVATAR -->
+	<div class="avatar">
+		<%= render 'shared/avatar' %>
+	</div>
+
+	<!-- NAME -->
+	<!-- NAME -->
+	<!-- NAME -->
+	<div>
+		<h2><%= @user.firstname %></h2>
+		<p>#<%= @user.username %></p>
+		<p><%= @user.bio %></p>
+		<p><%= link_to @user.website, current_user.website %></p>
+	</div>
+	
+	<!-- CONTROLS -->
+	<!-- CONTROLS -->
+	<!-- CONTROLS -->
+	<% if current_user.id == @user.id %> 
+		<%= render 'shared/profile_controls' %>
+	<% else %>
+		<%= render 'shared/friend_controls' %>
+	<% end %>
+</div>
+
+<div class="profile__friends">
+	<%= render 'shared/friends' %>
+</div>
+
+<div class="profile__stories">
+	<h3><%= @user.firstname %>'s Stories</h3>
+	<% if current_user.friends %>
+		<%= render 'stories/story', obj: @stories %>
+	<% else %>
+		<h4>Follow <%= @user.firstname %> to view their stories.</h4>
+	<% end %>
+</div>
