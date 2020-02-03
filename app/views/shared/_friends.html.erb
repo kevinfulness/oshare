@@ -1,38 +1,71 @@
 <% if current_user == @user %>
 
+
 	<!-- FRIENDS -->
 	<!-- FRIENDS -->
 	<!-- FRIENDS -->
-	<h3>Friends</h3>
+	<h2>Friends</h2>
 	<% if current_user.friends.any? %>
 		<% current_user.friends.each do |friend| %>
-			<%= link_to friend.firstname, user_path(friend) %>
+			<div class="friend__line-item">
+				<div class="friend__line-item_name">
+					<%= link_to user_path(friend), class: 'friend__line-item_name' do %>
+						<div class="avatar__small">
+							<%= render 'shared/avatar', obj: friend %>
+						</div>
+						<h3><%= friend.firstname %></h3>
+					<% end %>
+				</div>
+				<%= link_to conversations_path(sender_id: current_user.id, recipient_id: friend.id), method: :post, class: 'convo__link' do %>
+					<div class="profile__tab">
+						<%= show_svg('icon_convos.svg') %>
+					</div>
+				<% end %>
+			</div>
 		<% end %>
 	<% else %>
-		<h2>You got no bros, bro...</h2>
+		<h3>You got no bros, bro...</h3>
 	<% end %>
+
 
 	<!-- FRIEND REQUESTS -->
 	<!-- FRIEND REQUESTS -->
 	<!-- FRIEND REQUESTS -->
 	<% if current_user.requested_friends.any? %>
-		<h3>New Friend Requests</h3>
+		<h2>New Friend Requests</h2>
 		<% current_user.requested_friends.each do |friend| %>
-			<%= link_to friend.firstname, user_path(friend) %>
-			<%= form_for confirm_friendship_path, method: :post, remote: true do |f| %>
-				<%= f.hidden_field friend.id %>
-				<%= f.submit 'Be friends!' %>
-			<% end %>
+			<div class="friend__line-item">
+				<%= link_to user_path(friend), class: 'friend__line-item_name' do %>
+					<div class="avatar__small">
+						<%= render 'shared/avatar', obj: friend %>
+					</div>
+					<h3><%= friend.firstname %></h3>
+				<% end %>
+				<%= form_for confirm_friendship_path, method: :post, remote: true do |f| %>
+					<%= f.hidden_field friend.id %>
+					<%= f.submit 'Be friends!' %>
+				<% end %>
+			</div>
 		<% end %>
 	<% end %>
+
 
 	<!-- PENDING -->
 	<!-- PENDING -->
 	<!-- PENDING -->
 	<% if current_user.pending_friends.any? %>
-		<h3>Requested Friends</h3>
+		<h2>Requested Friends</h2>
 		<% current_user.pending_friends.each do |friend| %>
-			<%= link_to friend.firstname, user_path(friend) %>
+			<div class="friend__line-item">
+				<div class="friend__line-item_name">
+					<%= link_to user_path(friend), class: 'friend__line-item_name' do %>
+						<div class="avatar__small">
+							<%= render 'shared/avatar', obj: friend %>
+						</div>
+						<h3><%= friend.firstname %></h3>
+					<% end %>
+				</div>
+			</div>		
 		<% end %>
 	<% end %>
 <% end %>

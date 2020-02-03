@@ -64,3 +64,26 @@
 		background: #000;
 	}
 }
+
+.profile__tabs {
+	display: flex;
+}
+
+.profile__tab_active {
+	background: #F0F0F0;
+	svg {
+		fill: #FF6666;
+	}
+}
+
+.profile__tab {
+	height: 60px;
+	width: 60px;
+	padding: 10px;
+	border-radius: 25px;
+	margin: auto;
+	svg {
+		height: 40px;
+
+	}
+}

@@ -4,14 +4,14 @@
 	<!-- AVATAR -->
 	<!-- AVATAR -->
 	<div class="avatar">
-		<%= render 'shared/avatar' %>
+		<%= render 'shared/avatar', obj: @user %>
 	</div>
 
 	<!-- NAME -->
 	<!-- NAME -->
 	<!-- NAME -->
 	<div>
-		<h2><%= @user.firstname %></h2>
+		<h1><%= @user.firstname %></h1>
 		<p>#<%= @user.username %></p>
 		<p><%= @user.bio %></p>
 		<p><%= link_to @user.website, current_user.website %></p>
@@ -27,15 +27,42 @@
 	<% end %>
 </div>
 
-<div class="profile__friends">
-	<%= render 'shared/friends' %>
+
+<!-- TABS -->
+<!-- TABS -->
+<!-- TABS -->
+<div class="profile__tabs">
+	<div class="profile__tab profile__stories_tab profile__tab_active">
+		<%= show_svg('icon_stories.svg') %>
+	</div>
+	<div class="profile__tab profile__friends_tab">
+		<%= show_svg('icon_local.svg') %>
+	</div>
+	<div class="profile__tab profile__conversations_tab">
+		<%= show_svg('icon_convos.svg') %>
+	</div>
 </div>
 
-<div class="profile__stories">
-	<h3><%= @user.firstname %>'s Stories</h3>
-	<% if current_user.friends %>
-		<%= render 'stories/story', obj: @stories %>
-	<% else %>
-		<h4>Follow <%= @user.firstname %> to view their stories.</h4>
-	<% end %>
+
+<!-- PANES -->
+<!-- PANES -->
+<!-- PANES -->
+<div class="profile__panes">
+
+	<div class="profile__stories profile__pane_active">
+		<h2><%= @user.firstname %>'s Stories</h2>
+		<% if current_user.friends %>
+			<%= render 'stories/story', obj: @stories %>
+		<% else %>
+			<h3>Follow <%= @user.firstname %> to view their stories.</h3>
+		<% end %>
+	</div>
+
+	<div class="profile__friends profile__pane">
+		<%= render 'shared/friends' %>
+	</div>
+
+	<div class="profile__conversations profile__pane">
+	<%= render 'shared/conversations', obj: @conversations %>
+	</div>
 </div>

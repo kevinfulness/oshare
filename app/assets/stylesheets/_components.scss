@@ -33,4 +33,26 @@
 	height: 40px;
 	width: 40px;
 	border-radius: 20px;
+	& img {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+.friend__line-item,
+.friend__line-item_name {
+	display: flex;
+}
+
+.friend__line-item {
+	background: #F0F0F0;
+	padding: 10px;
+	border-radius: 25px;
+	.avatar__small {
+		margin: auto 10px auto 0;
+	}
+}
+
+.convo__link {
+	margin: auto 0 auto auto;
 }

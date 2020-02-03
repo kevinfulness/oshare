@@ -21,14 +21,12 @@
 		<!-- INFO -->
 		<!-- INFO -->
 		<div class="story__info">
-			<div class="story__avatar">
-				<% if story.user.avatar.attached? %>
-					<%= link_to user_path(story.user) do %>
-						<%= image_tag story.user.avatar, class: 'avatar__image' %>
-					<% end %>
-				<% end %>
-			</div>
-			<h4><%= link_to story.user.username, user_path(story.user) %></h4>
+			<%= link_to user_path(story.user) do %>
+				<div class="avatar__small">
+					<%= render 'shared/avatar', obj: story.user %>
+				</div>
+				<h4><% story.user.firstname %></h4>
+			<% end %>
 			<h4 class="story__timestamp"><%= time_ago_in_words(story.created_at) %> ago</h4>
 		</div>
 

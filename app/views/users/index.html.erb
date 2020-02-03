@@ -2,10 +2,10 @@
 <% @users.each do |user| %>
 	<div class="users__lineitem">
 		<%= link_to user_path(user) do %>
-			<% if user.avatar.attached? %>
-				<%= image_tag user.avatar, class: 'avatar avatar__small users__avatar' %>
-			<% end %>
-			<h3>#<%= user.username %></h3>
+			<div class="avatar__small">
+				<%= render 'shared/avatar', obj: user %>
+			</div>
+			<h3><%= user.firstname %></h3>
 		<% end %>
 		<% if can? :manage, user %> 
 			<%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: "My guy, you deadass wanna delete your account?"} %>

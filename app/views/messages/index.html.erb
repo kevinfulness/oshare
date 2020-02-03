@@ -3,6 +3,7 @@
 <% end %>
 
 <div class="ui segment">
+	<h2>Conversation With USER</h2>
 	<% @messages.each do |message| %>
 		<% if message.body %>
 			<% user = User.find(message.user_id) %>

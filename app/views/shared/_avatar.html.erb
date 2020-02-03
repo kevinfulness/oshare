@@ -1,5 +1,5 @@
-<% if @user.avatar.attached? %>
-	<%= image_tag @user.avatar, class: 'avatar profile__avatar', alt: 'avatar' %>
+<% if obj.avatar.attached? %>
+	<%= image_tag obj.avatar, class: 'avatar profile__avatar', alt: 'avatar' %>
 <% else %>
 	<%= image_tag('default_avatar.png', class: 'avatar profile__avatar', alt: 'avatar') %>
 <% end %>
