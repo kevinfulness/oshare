@@ -1,6 +1,9 @@
 <div class="profile__controls">
-	<ul>
-		<li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
-		<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
-	</ul>
+	<%= link_to edit_user_path(@user) do %>
+		<div class="control__icon"><%= show_svg('icon_edit.svg') %></div>
+	<% end %>
+	<%= link_to destroy_user_session_path, :method => :delete do %>
+		<div class="control__icon"><%= show_svg('icon_logout.svg') %></div>
+	<% end %>
+
 </div>

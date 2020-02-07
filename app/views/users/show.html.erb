@@ -31,17 +31,26 @@
 <!-- TABS -->
 <!-- TABS -->
 <!-- TABS -->
-<div class="profile__tabs">
-	<div class="profile__tab profile__stories_tab profile__tab_active">
-		<%= show_svg('icon_stories.svg') %>
+
+<% if current_user.id == @user.id %> 
+	<div class="profile__tabs">
+		<div class="profile__tab profile__stories_tab profile__tab_active">
+			<%= show_svg('icon_stories.svg') %>
+		</div>
+		<div class="profile__tab profile__friends_tab">
+			<% if current_user.requested_friends.any? %>
+				<div class="notification"></div>
+			<% end %>
+			<%= show_svg('icon_local.svg') %>
+		</div>
+		<div class="profile__tab profile__conversations_tab">
+			<% if current_user.messages.any? %>
+				<div class="notification"></div>
+			<% end %>
+			<%= show_svg('icon_convos.svg') %>
+		</div>
 	</div>
-	<div class="profile__tab profile__friends_tab">
-		<%= show_svg('icon_local.svg') %>
-	</div>
-	<div class="profile__tab profile__conversations_tab">
-		<%= show_svg('icon_convos.svg') %>
-	</div>
-</div>
+<% end %>
 
 
 <!-- PANES -->
@@ -58,11 +67,13 @@
 		<% end %>
 	</div>
 
-	<div class="profile__friends profile__pane">
-		<%= render 'shared/friends' %>
-	</div>
+	<% if current_user.id == @user.id %> 
+		<div class="profile__friends profile__pane">
+			<%= render 'shared/friends' %>
+		</div>
 
-	<div class="profile__conversations profile__pane">
-	<%= render 'shared/conversations', obj: @conversations %>
-	</div>
+		<div class="profile__conversations profile__pane">
+		<%= render 'shared/conversations', obj: @conversations %>
+		</div>
+	<% end %>
 </div>

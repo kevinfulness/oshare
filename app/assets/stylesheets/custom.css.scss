@@ -41,10 +41,11 @@ ul {
 }
 
 .wrapper {
-	margin: 70px auto 0 auto;
+	margin: 30px auto 70px auto;
 	min-width: 320px;
 	max-width: 375px;
 	height: 100%;
+	border: 1px solid red;
 }
 
 .hidden {

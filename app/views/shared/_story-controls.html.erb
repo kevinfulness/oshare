@@ -1,0 +1,8 @@
+<% if can? :manage, story %> 
+	<div class="story__controls">
+		<ul>
+			<li><%= link_to 'Edit', edit_story_path(story) %></li>
+			<li><%= link_to 'Delete', story_path(story), method: :delete, data: {confirm: "Bruh... you sure?"} %></li>
+		</ul>
+	</div>
+<% end %>

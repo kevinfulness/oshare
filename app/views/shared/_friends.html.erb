@@ -32,7 +32,7 @@
 	<!-- FRIEND REQUESTS -->
 	<!-- FRIEND REQUESTS -->
 	<% if current_user.requested_friends.any? %>
-		<h2>New Friend Requests</h2>
+		<h2>These People Want to be Your Friend</h2>
 		<% current_user.requested_friends.each do |friend| %>
 			<div class="friend__line-item">
 				<%= link_to user_path(friend), class: 'friend__line-item_name' do %>
@@ -41,9 +41,10 @@
 					</div>
 					<h3><%= friend.firstname %></h3>
 				<% end %>
-				<%= form_for confirm_friendship_path, method: :post, remote: true do |f| %>
-					<%= f.hidden_field friend.id %>
-					<%= f.submit 'Be friends!' %>
+				<%= link_to confirm_friendship_path(@user) do %>
+					<div class="button button__primary">
+						Become Friends with <%= @user.firstname %>
+					</div>
 				<% end %>
 			</div>
 		<% end %>
@@ -54,7 +55,7 @@
 	<!-- PENDING -->
 	<!-- PENDING -->
 	<% if current_user.pending_friends.any? %>
-		<h2>Requested Friends</h2>
+		<h2>You're Waiting to Hear Back from These People</h2>
 		<% current_user.pending_friends.each do |friend| %>
 			<div class="friend__line-item">
 				<div class="friend__line-item_name">

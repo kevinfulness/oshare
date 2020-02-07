@@ -1,4 +1,5 @@
-$(function () {
+$(document).on('turbolinks:load', function() {
+//$(function () {
     console.log("Hello from profile-tab.js");
 	$('.profile__stories').show();
     $('.profile__friends').hide();

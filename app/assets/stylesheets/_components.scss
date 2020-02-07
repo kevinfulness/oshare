@@ -1,18 +1,30 @@
 .button {
-	height: 24px;
+	height: 30px;
 	width: 100%;
+	min-width: 100%;
 	text-align: center;
-	&__primary {
-		background: #000;
-		color: #fff;
-	}
-	&__secondary {
-		background: #fff;
-		color: #000;
-		border: 1px solid #000;
-	}
+	font-family: arial, sans serif;
+	font-size: 16px;
+	margin-bottom: 10px;
+	padding: 7px;
+	border: none;
+	border-radius: 15px;
+}
+
+.button__primary {
+	background: #FF6666;
+	color: #FFF;
+	cursor: pointer;
 	&:hover {
 		background: #000;
+	}
+}
+.button__secondary {
+	background: #000;
+	color: #FFF;
+	cursor: pointer;
+	&:hover {
+		background: #ccc;
 	}
 }
 
@@ -55,4 +67,22 @@
 
 .convo__link {
 	margin: auto 0 auto auto;
+}
+
+.notification {
+	margin: 0 auto -10px 0;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background: #FF6666;
+	z-index: 1;
+}
+
+.control__icon {
+	width: 32px;
+	height: 32px;
+	svg {
+		width: 32px;
+		height: 32px;
+	}
 }

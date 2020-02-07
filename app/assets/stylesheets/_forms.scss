@@ -6,14 +6,23 @@ textarea,
 label[for="user_avatar"],
 label[for="post_image"] {
 	font-family: arial, sans serif;
-	font-size: 12px;
+	font-size: 16px;
 	margin-bottom: 10px;
 	min-width: 100%;
-	padding-left: 20px;
 	border: none;
 	border-radius: 15px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+textarea,
+label[for="user_avatar"],
+label[for="post_image"] {
+	padding-left: 20px;
 	background: #F0F0F0;
 }
+
 
 input, label {
 	height: 30px;
